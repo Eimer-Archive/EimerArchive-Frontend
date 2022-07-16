@@ -2,6 +2,9 @@
   <nav class="bg-gray-700 p-5 relative dirt">
     <div class="ml-[50%] transform -translate-x-1/2 flex gap-7 w-[80%]">
       <nuxt-link to="/" style="float: left"><h1 class="text-white font-bold text-3xl block">MC Archive</h1></nuxt-link>
+      <nuxt-link to="/"><button class="block text-white font-semibold" style="float: right">Plugins</button></nuxt-link>
+      <nuxt-link to="/"><button class="block text-white font-semibold" style="float: right">Mods</button></nuxt-link>
+      <nuxt-link to="/"><button class="block text-white font-semibold" style="float: right">Server Software</button></nuxt-link>
       <button class="block text-white font-semibold" style="float: right">Login</button>
     </div>
 
