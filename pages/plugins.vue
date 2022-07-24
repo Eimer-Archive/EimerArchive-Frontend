@@ -1,6 +1,6 @@
 <template>
   <div id="list" style="max-width: 1200px; margin-left: auto; margin-right: auto">
-    <resource v-for="resource in resources" :name="resource.name" :blurb="resource.blurb" :resource="resource" />
+    <resource v-for="resource in resources" :name="resource.name" :blurb="resource.blurb" :id="resource.id" :resource="resource" />
   </div>
 </template>
 

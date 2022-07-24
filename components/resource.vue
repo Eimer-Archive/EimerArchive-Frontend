@@ -1,6 +1,6 @@
 <template>
   <div class="block" style="width: auto">
-    <h1><a href="/archive/craftbukkit" class="title"><b>{{ name }}</b></a></h1>
+    <h1><a :href="'/archive/' + id" class="title"><b>{{ name }}</b></a></h1>
     <p class="description">{{ blurb }}</p>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
   name: 'resource',
-  props: ['name', 'blurb', 'description', 'source', 'author', 'category'],
+  props: ['name', 'blurb', 'description', 'source', 'author', 'category', 'id'],
 }
 </script>
 
