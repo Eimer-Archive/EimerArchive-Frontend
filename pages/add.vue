@@ -23,22 +23,19 @@ export default {
   name: 'add',
   methods: {
     addResource: function() {
-      console.log("Adding resource...");
-      document.getElementById('name').value = "some name to test if this runs";
-
       const config = {
         headers: {
           Accept: "application/json"
         }
       };
 
-      var name = document.getElementById('name').value;
-      var blurb = document.getElementById('blurb').value;
-      var description = document.getElementById('description').value;
-      var source = document.getElementById('source').value;
-      var author = document.getElementById('author').value;
-      var category = document.getElementById('category').value;
-      var data = {
+      const name = document.getElementById('name').value
+      const blurb = document.getElementById('blurb').value;
+      const description = document.getElementById('description').value;
+      const source = document.getElementById('source').value;
+      const author = document.getElementById('author').value;
+      const category = document.getElementById('category').value;
+      const data = {
         name: name,
         blurb: blurb,
         description: description,
