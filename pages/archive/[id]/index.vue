@@ -4,22 +4,13 @@
       <h1 class="title"><b>{{ this.project.name }}</b></h1>
       <p class="description">{{ this.project.description }}</p>
     </div>
-    <div class="block">
-      <h1 class="title">Beta 1.7.3</h1>
-      <div class="top-bar">
-        <p class="version">Build: 1093</p>
-        <button class="download-button" style="margin-top: 3px">Download</button>
-      </div>
-      <div class="top-bar">
-        <p class="version">Build: 1060</p>
-        <button class="download-button" style="margin-top: 3px">Download</button>
-      </div>
-    </div>
+    <version-block v-for="version in versions" :version="version" :versions="versions"></version-block>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Versionblock from '../../../components/version-block'
 
 export default {
   name: 'index',
@@ -27,6 +18,8 @@ export default {
     return {
       isLoaded: false,
       project: {},
+      versions: [],
+      builds: []
     }
   },
   async beforeCreate () {
@@ -39,6 +32,16 @@ export default {
     try {
       const res = await axios.get('http://localhost:8080/archive/' + this.$route.params.id, config)
       this.project = res.data;
+
+      for (let j = 0; j < res.data.updates.length; j++) {
+        var version = "{ \"" +  + "}"
+        this.builds.push(res.data.updates[j]);
+        for (let i = 0; i < res.data.updates[j].versions.length; i++) {
+          if (this.versions.includes(res.data.updates[j].versions[i])) continue;
+          this.versions.push(res.data.updates[j].versions[i]);
+        }
+      }
+
       this.isLoaded = true;
     } catch (e) {
       console.log(e)
