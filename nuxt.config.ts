@@ -13,6 +13,7 @@ export default defineNuxtConfig({
   },
   publicRuntimeConfig: {
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    apiURL: 'http://localhost:8080',
     discordURL: 'https://discord.gg/k8RcgxpnBS'
   }
 })

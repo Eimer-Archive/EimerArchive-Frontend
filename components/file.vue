@@ -1,14 +1,14 @@
 <template>
   <div class="top-bar">
-    <p class="version">Build: {{ version }}</p>
-    <button class="download-button" style="margin-top: 3px">Download</button>
+    <p class="version">Build: {{ version.version }}</p>
+    <a :href="'https://mc-archive.justdoom.workers.dev/' + id + '/' + version.id + '/' + version.filename"><button class="download-button" style="margin-top: 3px">Download</button></a>
   </div>
 </template>
 
 <script>
 export default {
   name: 'file',
-  props: ['version'],
+  props: ['version', 'id'],
 }
 </script>
 

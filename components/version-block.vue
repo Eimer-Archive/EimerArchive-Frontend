@@ -1,14 +1,14 @@
 <template>
   <div class="block">
     <h1 class="title">{{ version }}</h1>
-    <file v-for="version in versions" :version="version"></file>
+    <file v-for="version in versions" :version="version" :id="id"></file>
   </div>
 </template>
 
 <script>
 export default {
   name: 'version-block',
-  props: ['version', 'versions'],
+  props: ['version', 'versions', 'id'],
 }
 </script>
 
