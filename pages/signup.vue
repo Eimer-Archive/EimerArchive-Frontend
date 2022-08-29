@@ -5,6 +5,7 @@
       <div class="description">
         Username: <input id="username" class="input-box" type="text" placeholder="Username"/><br>
         Password: <input id="password" class="input-box" type="password" placeholder="Password"/><br>
+        Email: <input id="email" class="input-box" type="text" placeholder="Email"/><br>
         <button v-on:click="login">Login</button>
       </div>
       <p class="description">Currently there is no signing up for an account, this feature is still in the works. Only
@@ -21,33 +22,24 @@ export default {
   methods: {
     login: function () {
       const config = {
-        crossDomain: true,
         headers: {
-          'Content-Type': 'application/json',
-          //'Access-Control-Allow-Origin': 'http://localhost:3000',
-          //'Access-Control-Allow-Credentials': true,
+          Accept: 'application/json',
         },
-        withCredentials: true,
       }
 
       const username = document.getElementById('username').value
       const password = document.getElementById('password').value
+      const email = document.getElementById('email').value
       const data = {
         username: username,
         password: password,
+        email: email,
+        role: [
+          'USER',
+        ],
       }
 
-      // const xhr = new XMLHttpRequest();
-      // xhr.open('POST', 'http://localhost:8080/api/auth/signin');
-      // xhr.setRequestHeader('Content-Type', 'application/json');
-      // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-      // xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
-      // xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-      // xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-      // xhr.withCredentials = true;
-      // xhr.send(JSON.stringify(data));
-
-      axios.post('http://localhost:8080/api/auth/signin', data, config).then(function (response) {
+      axios.post('http://localhost:8080/api/auth/signup', data, config).then(function (response) {
         console.log(response)
       }).catch(function (error) {
         console.log(error)
