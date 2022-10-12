@@ -21,11 +21,9 @@ export default {
   methods: {
     login: function () {
       const config = {
-        crossDomain: true,
+        //crossDomain: true,
         headers: {
           'Content-Type': 'application/json',
-          //'Access-Control-Allow-Origin': 'http://localhost:3000',
-          //'Access-Control-Allow-Credentials': true,
         },
         withCredentials: true,
       }
@@ -36,16 +34,6 @@ export default {
         username: username,
         password: password,
       }
-
-      // const xhr = new XMLHttpRequest();
-      // xhr.open('POST', 'http://localhost:8080/api/auth/signin');
-      // xhr.setRequestHeader('Content-Type', 'application/json');
-      // xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-      // xhr.setRequestHeader('Access-Control-Allow-Credentials', true);
-      // xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-      // xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-      // xhr.withCredentials = true;
-      // xhr.send(JSON.stringify(data));
 
       axios.post('http://localhost:8080/api/auth/signin', data, config).then(function (response) {
         console.log(response)

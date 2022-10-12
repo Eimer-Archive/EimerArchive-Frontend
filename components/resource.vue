@@ -1,6 +1,6 @@
 <template>
   <div class="block" style="width: auto">
-    <h1><a :href="'/archive/' + id" class="title"><b>{{ name }}</b></a></h1>
+    <h1><nuxt-link :to="'/archive/' + id" class="title"><b>{{ name }}</b></nuxt-link></h1>
     <p class="description">{{ blurb }}</p>
   </div>
 </template>

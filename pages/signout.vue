@@ -18,13 +18,12 @@ export default {
 
       const config = {
         headers: {
-          Accept: '*/*',
           'Content-Type': 'application/json',
-          credentials: "include"
         },
+        withCredentials: true
       }
 
-      axios.post('http://localhost:8080/api/auth/signout', config).then(function (response) {
+      axios.post('http://localhost:8080/api/auth/signout',{}, config).then(function (response) {
         console.log("signedout")
       }).catch(function (error) {
         console.log(error)
