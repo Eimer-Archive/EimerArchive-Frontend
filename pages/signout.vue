@@ -13,23 +13,7 @@ import axios from 'axios'
 
 export default {
   name: 'add',
-  methods: {
-    signout: function () {
 
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true
-      }
-
-      axios.post('http://localhost:8080/api/auth/signout',{}, config).then(function (response) {
-        console.log("signedout")
-      }).catch(function (error) {
-        console.log(error)
-      })
-    },
-  },
 }
 </script>
 

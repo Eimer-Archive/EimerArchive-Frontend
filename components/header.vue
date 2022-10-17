@@ -9,21 +9,8 @@
       <nuxt-link v-if="info.username === undefined" to="/login" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">Login</button></nuxt-link>
 
       <p v-if="info.username !== undefined" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">{{ this.info.username }}</button></p>
-      <nuxt-link v-if="info.username !== undefined" to="/signout" class="block text-white font-semibold" style=""><button class="block text-white font-semibold">Logout</button></nuxt-link>
+      <p v-if="info.username !== undefined" class="block text-white font-semibold" v-on:click="logout"><button class="block text-white font-semibold">Logout</button></p>
     </div>
-
-    <!--<div class="absolute bottom-0 left-[20%] flex gap-3">
-      <NuxtLink class="block text-white bg-gray-600 p-1 rounded-t-md" to="/">
-        Home
-      </NuxtLink>
-      <NuxtLink class="block text-white p-1 rounded-t-md" to="/resources">
-        Resources
-      </NuxtLink>
-      <div class="w-[2px] bg-white block">ㅤ</div>
-      <a class="block text-white p-1 rounded-t-md" :href="$config.discordURL">
-        Discord
-      </a>
-    </div>-->
   </nav>
 </template>
 
@@ -57,9 +44,25 @@ export default {
       const response = await axios.get("http://localhost:8080/api/auth/info", config)
       this.info = response.data;
     } catch (e) {
-      console.log(e)
+      //console.log(e)
     }
-  }
+  },
+  methods: {
+    logout: function () {
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true
+      }
+
+      axios.post('http://localhost:8080/api/auth/signout',{}, config).then(function (response) {
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+  },
 }
 </script>
 

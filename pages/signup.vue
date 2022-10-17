@@ -6,10 +6,8 @@
         Username: <input id="username" class="input-box" type="text" placeholder="Username"/><br>
         Password: <input id="password" class="input-box" type="password" placeholder="Password"/><br>
         Email: <input id="email" class="input-box" type="text" placeholder="Email"/><br>
-        <button v-on:click="login">Login</button>
+        <button v-on:click="signup">Signup</button>
       </div>
-      <p class="description">Currently there is no signing up for an account, this feature is still in the works. Only
-        admins have accounts.</p>
     </div>
   </div>
 </template>
@@ -20,7 +18,7 @@ import axios from 'axios'
 export default {
   name: 'add',
   methods: {
-    login: function () {
+    signup: function () {
       const config = {
         headers: {
           Accept: 'application/json',
@@ -33,10 +31,7 @@ export default {
       const data = {
         username: username,
         password: password,
-        email: email,
-        role: [
-          'USER',
-        ],
+        email: email
       }
 
       axios.post('http://localhost:8080/api/auth/signup', data, config).then(function (response) {

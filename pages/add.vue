@@ -21,12 +21,32 @@ import axios from "axios";
 
 export default {
   name: 'add',
+  middleware({ }) {
+    console.log("GFES");
+    // const config = {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   withCredentials: true,
+    // }
+    //
+    // try {
+    //   const response = await axios.get("http://localhost:8080/api/auth/info", config)
+    //   console.log("MIDDLEWARE: " + response.data);
+    // } catch (e) {
+    //   console.log(e)
+    // }
+    // if (!store.state.auth.loggedIn) {
+    //   return redirect('/login');
+    // }
+  },
   methods: {
     addResource: function() {
       const config = {
         headers: {
           Accept: "application/json"
-        }
+        },
+        withCredentials: true,
       };
 
       const name = document.getElementById('name').value

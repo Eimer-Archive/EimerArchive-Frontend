@@ -24,9 +24,10 @@ export default {
     addResource: function() {
       const config = {
         headers: {
-          //Accept: "application/json",
+          Accept: "application/json",
           'Content-Type': 'multipart/form-data'
-        }
+        },
+        withCredentials: true
       };
 
       const id = document.getElementById('id').value
