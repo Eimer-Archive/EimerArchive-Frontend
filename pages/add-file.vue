@@ -50,16 +50,14 @@ export default {
       const id = document.getElementById('id').value
       const description = document.getElementById('description').value;
       const version = document.getElementById('version').value;
-      const versions = this.value;
       const file = document.getElementById('file').files[0];
 
       const data = {
         id: id,
         description: description,
         version: version,
-        versions: [versions]
+        versions: [this.value]
       }
-      console.log(versions);
 
       let formData = new FormData();
       formData.append('file', file);
