@@ -30,7 +30,7 @@ export default {
     }
 
     try {
-      const res = await axios.get( this.$config.apiURL + '/archive/' + this.$route.params.id, config)
+      const res = await axios.get( this.$config.apiURL + '/api/archive/' + this.$route.params.id, config)
       this.project = res.data;
 
       for (let j = 0; j < res.data.updates.length; j++) {

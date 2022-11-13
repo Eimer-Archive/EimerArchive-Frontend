@@ -64,7 +64,7 @@ export default {
         category: category
       }
 
-      axios.post('http://localhost:8080/archive/api/create', data, config).then(function(response) {
+      axios.post('http://localhost:8080/api/archive/create', data, config).then(function(response) {
         console.log(response);
       }).catch(function(error) {
         console.log(error);

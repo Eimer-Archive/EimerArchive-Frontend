@@ -26,7 +26,7 @@ export default {
     };
 
     try {
-      const res = await axios.get(this.$config.apiURL + '/archive/plugins', config);
+      const res = await axios.get(this.$config.apiURL + '/api/archive/plugins', config);
 
       for (let i = 0; i < res.data.content.length; i++) {
         this.resources.push(res.data.content[i]);

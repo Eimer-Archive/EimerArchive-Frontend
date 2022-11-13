@@ -63,7 +63,7 @@ export default {
       formData.append('file', file);
       formData.append('data', JSON.stringify(data));
 
-      axios.post('http://localhost:8080/file/upload', formData, config).then(function (response) {
+      axios.post('http://localhost:8080/api/file/upload', formData, config).then(function (response) {
         console.log(response);
       }).catch(function (error) {
         console.log(error);
