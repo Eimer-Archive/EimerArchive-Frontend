@@ -3,7 +3,7 @@
     <Header/>
     <div class="basis-0 grow">
       <div class="ml-[50%] my-8 transform -translate-x-1/2 w-[80%]">
-        <slot/>
+        <nuxt/>
       </div>
     </div>
     <!--<Footer/>-->

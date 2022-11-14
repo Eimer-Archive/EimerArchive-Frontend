@@ -1,27 +1,23 @@
 {
   "private": true,
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "start": "node .output/server/index.mjs",
-    "lint": "eslint '{**/*,*}.{js,ts,html,vue}'",
-    "lint:fix": "eslint --fix '{**/*,*}.{js,ts,html,vue}'"
-  },
-  "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^8.0.0",
-    "@nuxtjs/tailwindcss": "^5.0.0-4",
-    "autoprefixer": "^10.4.2",
-    "eslint": "^8.8.0",
-    "nuxt3": "^3.0.0-27408103.b243891",
-    "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.19",
-    "typescript": "^4.5.5"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
     "axios": "^0.27.2",
-    "vue-cookies": "^1.8.1",
-    "vue-multiselect": "^3.0.0-alpha.2",
-    "vue-router": "4",
-    "yarn": "^1.22.19"
+    "core-js": "^3.25.3",
+    "nuxt": "^2.13.3",
+    "vue": "^2.7.10",
+    "vue-multiselect": "^2.1.6",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^5.3.3",
+    "postcss": "^8.4.17"
   }
 }

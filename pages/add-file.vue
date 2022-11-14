@@ -5,7 +5,8 @@
       <div class="description">
         Resource ID: <input id="id" class="input-box" type="text" placeholder="Resource ID"/><br>
         Description: <input id="description" class="input-box" type="text" placeholder="Description"/><br>
-        Versions: <VueMultiselect
+        Versions:
+        <Multiselect
             v-model="value"
             :options="options"
             :multiple="true"
@@ -26,11 +27,11 @@
 
 <script>
 import axios from "axios";
-import VueMultiselect from 'vue-multiselect'
+import Multiselect from 'vue-multiselect'
 
 export default {
   name: 'add',
-  components: {VueMultiselect},
+  components: {Multiselect},
   data() {
     return {
       value: [],
@@ -86,7 +87,7 @@ export default {
 }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .block {
   background: rgba(51, 50, 50, 0.5);

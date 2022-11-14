@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <h1 class="title">{{ version }}</h1>
-    <file v-for="version in versions" :version="version" :id="id"></file>
+    <file v-for="version in versions" :key="id" :version="version" :id="id"></file>
   </div>
 </template>
 

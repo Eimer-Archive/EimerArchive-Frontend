@@ -4,7 +4,7 @@
       <h1 class="title"><b>{{ this.project.name }}</b></h1>
       <p class="description">{{ this.project.description }}</p>
     </div>
-    <version-block v-for="(value, index) in versions" :version="index" :versions="value" :id="this.project.id"></version-block>
+    <version-block v-for="(value, index) in versions" :key="this.project.id" :version="index" :versions="value" :id="this.project.id"></version-block>
   </div>
 </template>
 

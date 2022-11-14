@@ -6,10 +6,10 @@
       <nuxt-link to="/mods"><button class="block text-white font-semibold">Mods</button></nuxt-link>
       <nuxt-link to="/server-software"><button class="block text-white font-semibold">Server Software</button></nuxt-link>
 
-      <nuxt-link v-if="info.username === undefined" to="/login" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">Login</button></nuxt-link>
+      <nuxt-link v-if="$store.state.auth.user === undefined" to="/login" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">Login</button></nuxt-link>
 
-      <p v-if="info.username !== undefined" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">{{ this.info.username }}</button></p>
-      <p v-if="info.username !== undefined" class="block text-white font-semibold" v-on:click="logout"><button class="block text-white font-semibold">Logout</button></p>
+      <p v-if="$store.state.auth.user !== undefined" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">{{ $store.state.auth.user }}</button></p>
+      <p v-if="$store.state.auth.user !== undefined" class="block text-white font-semibold" v-on:click="logout"><button class="block text-white font-semibold">Logout</button></p>
     </div>
   </nav>
 </template>
@@ -27,26 +27,6 @@ import axios from "axios";
 export default {
   name: 'Header',
   components: { Auth },
-  data() {
-    return {
-      info: []
-    };
-  },
-  async beforeCreate() {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-    }
-
-    try {
-      const response = await axios.get("http://localhost:8080/api/auth/info", config)
-      this.info = response.data;
-    } catch (e) {
-      //console.log(e)
-    }
-  },
   methods: {
     logout: function () {
 
