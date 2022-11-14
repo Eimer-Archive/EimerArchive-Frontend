@@ -18,6 +18,10 @@ export default {
         ]
     },
 
+    router: {
+        middleware: ['auth']
+    },
+
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
     ],
@@ -39,6 +43,7 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        ['cookie-universal-nuxt', {alias: 'cookies'}],
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build

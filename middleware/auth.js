@@ -2,12 +2,10 @@ import axios from "axios";
 
 export default async function (context) {
 
-    const token = context.app.$cookies.get('token');
+    const token = context.app.$cookies.get('user-cookie');
 
     try {
-        const user = await axios.post(`${process.env.apiURL}/api/auth/info`, {"user-cookie": token});
-
-        console.log(user.data);
+        const user = await context.app.$axios.post('api/info', {"token": token});
 
         await context.store.dispatch('auth/fetchUser', {
             token: token,
