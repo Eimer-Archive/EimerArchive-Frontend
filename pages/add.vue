@@ -17,38 +17,11 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: 'add',
-  middleware({ }) {
-    console.log("GFES");
-    // const config = {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   withCredentials: true,
-    // }
-    //
-    // try {
-    //   const response = await axios.get("http://localhost:8080/api/auth/info", config)
-    //   console.log("MIDDLEWARE: " + response.data);
-    // } catch (e) {
-    //   console.log(e)
-    // }
-    // if (!store.state.auth.loggedIn) {
-    //   return redirect('/login');
-    // }
-  },
+  auth: true,
   methods: {
-    addResource: function() {
-      const config = {
-        headers: {
-          Accept: "application/json"
-        },
-        withCredentials: true,
-      };
-
+    addResource: function () {
       const name = document.getElementById('name').value
       const blurb = document.getElementById('blurb').value;
       const description = document.getElementById('description').value;
@@ -64,9 +37,13 @@ export default {
         category: category
       }
 
-      axios.post('http://localhost:8080/api/archive/create', data, config).then(function(response) {
+      this.$axios.post('api/archive/create', data, {
+        headers: {
+          Authorization: this.$store.state.auth.token
+        },
+      }).then(function (response) {
         console.log(response);
-      }).catch(function(error) {
+      }).catch(function (error) {
         console.log(error);
       });
     }

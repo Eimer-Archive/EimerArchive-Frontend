@@ -26,28 +26,19 @@
 </template>
 
 <script>
-import axios from "axios";
 import Multiselect from 'vue-multiselect'
 
 export default {
   name: 'add',
+  auth: true,
   components: {Multiselect},
   data() {
     return {
       value: [],
-      options: []
     }
   },
   methods: {
     addResource: function () {
-      const config = {
-        headers: {
-          Accept: "application/json",
-          'Content-Type': 'multipart/form-data'
-        },
-        withCredentials: true
-      };
-
       const id = document.getElementById('id').value
       const description = document.getElementById('description').value;
       const version = document.getElementById('version').value;
@@ -64,21 +55,32 @@ export default {
       formData.append('file', file);
       formData.append('data', JSON.stringify(data));
 
-      axios.post('http://localhost:8080/api/file/upload', formData, config).then(function (response) {
+      this.$axios.post('api/file/upload', formData, {
+        headers: {
+          Authorization: this.$store.state.auth.token,
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
         console.log(response);
       }).catch(function (error) {
         console.log(error);
       });
     }
   },
-  async beforeCreate() {
+  async asyncData(data) {
     try {
-      const res = await axios.get(this.$config.apiURL + '/archive/versions');
+      const res = await data.$axios.get('api/archive/versions');
+
+      const options = [];
 
       for (let i = 0; i < res.data.versions.length; i++) {
-        this.options.push({
+        options.push({
           name: res.data.versions[i]
         });
+      }
+
+      return {
+        options
       }
     } catch (e) {
       console.log(e)
