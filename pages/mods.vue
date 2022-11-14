@@ -1,12 +1,10 @@
 <template>
   <div id="list" style="max-width: 1200px; margin-left: auto; margin-right: auto">
-    <p>{{ test }}</p>
     <resource v-for="resource in resources" :key="resource.id" :name="resource.name" :blurb="resource.blurb" :id="resource.id" :resource="resource" />
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import resource from '../components/resource'
 
 export default {
