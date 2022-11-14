@@ -3,8 +3,7 @@
     <div class="block">
       <h1 class="title"><b>{{ project.name }}</b></h1>
       <p class="description">{{ project.description }}</p>
-      <p>{{versions}}</p>
-      <p v-if="versions.length === 0">No files for this resource yet :(</p>
+      <p v-if="JSON.stringify(versions) === '{}'" class="description"><br>No files for this resource yet :(</p>
     </div>
     <version-block v-for="(value, index) in versions" :key="project.id" :version="index" :versions="value"
                    :id="project.id"></version-block>
@@ -39,9 +38,7 @@ export default {
           version.push(project.updates[j]);
         }
       }
-
-      console.log(versions.length);
-
+      
       return {
         project,
         versions,
