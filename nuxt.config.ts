@@ -57,6 +57,12 @@ export default {
 
     axios: {
         // set default axios url
-        baseURL: 'http://localhost:8080'
+        baseURL: 'http://localhost:8080',
+        // default config
+        headers: {
+            common: {
+                Accept: 'application/json'
+            }
+        }
     }
 }
