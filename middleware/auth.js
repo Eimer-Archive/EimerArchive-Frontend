@@ -12,7 +12,7 @@ export default async function (context) {
             'user': user.data
         })
 
-        if (routeOption(context.route, 'auth', true) && context.store.state.auth.user.role !== 'ADMIN') {
+        if (routeOption(context.route, 'auth', true) && context.store.state.auth.user.role !== 'ROLE_ADMIN') {
             return context.redirect('/login')
         }
     } catch (e) {
