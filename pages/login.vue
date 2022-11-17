@@ -19,9 +19,8 @@ import axios from 'axios'
 export default {
   name: 'add',
   methods: {
-    login: function () {
+    login: async function () {
       const config = {
-        //crossDomain: true,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -35,11 +34,12 @@ export default {
         password: password,
       }
 
-      axios.post('http://localhost:8080/api/auth/signin', data, config).then(function (response) {
-        console.log(response)
-      }).catch(function (error) {
-        console.log(error)
-      })
+      try {
+        await axios.post('http://localhost:8080/api/auth/signin', data, config)
+        await this.$router.push('/')
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }
