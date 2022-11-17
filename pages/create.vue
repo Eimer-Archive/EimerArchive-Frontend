@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'add',
+  name: 'create',
   auth: true,
   methods: {
     addResource: function () {

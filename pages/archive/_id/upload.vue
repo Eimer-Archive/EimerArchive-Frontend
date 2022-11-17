@@ -29,7 +29,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-  name: 'add',
+  name: 'upload',
   auth: true,
   components: {Multiselect},
   data() {
@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style src="../../../node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .block {
   background: rgba(51, 50, 50, 0.5);
