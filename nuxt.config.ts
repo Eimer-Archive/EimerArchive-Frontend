@@ -3,7 +3,7 @@ export default {
     target: 'server',
 
     head: {
-        title: 'MCServer Archive',
+        title: 'Eimer Archive',
         htmlAttrs: {
             lang: 'en'
         },
