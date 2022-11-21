@@ -6,6 +6,18 @@
         <p>Name: <br><input id="title" class="input-box" :value="project.name"/></p>
         <p>Blurb: <br><input id="blurb" class="input-box" :value="project.blurb"/></p>
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description" :value="project.description"/></p><br>
+        <p>Category: <br>
+          <Multiselect
+              v-model="project.category"
+              :options="options"
+              :multiple="false"
+              :close-on-select="true"
+              placeholder="Pick one"
+              label="name"
+              track-by="name"
+              id="category"
+          />
+        </p>
       </div>
       <p class="description">Edit the resource info</p>
       <button v-on:click="editResource">Edit</button>
@@ -14,13 +26,19 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
+
 export default {
   name: 'upload',
   auth: true,
+  components: {Multiselect},
   data() {
     return {
-      value: [],
+      value: null,
     }
+  },
+  created() {
+    //console.log(project)
   },
   methods: {
     editResource: async function () {
@@ -45,11 +63,24 @@ export default {
   },
   async asyncData(data) {
     try {
-      const res = await data.$axios.get('api/archive/' + data.params.id);
+      let res = await data.$axios.get('api/archive/' + data.params.id);
       const project = res.data;
 
+      res = await data.$axios.get('api/archive/categories', {
+        headers: {
+          Authorization: data.store.state.auth.token
+        }
+      });
+
+      const categories = [];
+
+      for (let i = 0; i < res.data.length; i++) {
+        categories.push({name: res.data[i]});
+      }
+
       return {
-        project
+        project,
+        options: categories
       }
     } catch (e) {
       console.log(e)
@@ -58,6 +89,7 @@ export default {
 }
 </script>
 
+<style src="../../../node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .block {
   background: rgba(51, 50, 50, 0.5);
