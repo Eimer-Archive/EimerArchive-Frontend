@@ -8,7 +8,7 @@
             v-model="value"
             :options="options"
             :multiple="true"
-            :close-on-select="true"
+            :close-on-select="false"
             placeholder="Pick some"
             label="name"
             track-by="name"
