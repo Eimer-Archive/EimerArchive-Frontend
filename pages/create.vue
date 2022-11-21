@@ -8,7 +8,18 @@
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description"/></p>
         <p>Source: <br><input id="source" class="input-box" type="text" placeholder="Source"/></p>
         <p>Author/s: <br><input id="author" class="input-box" type="text" placeholder="Author/s"/></p>
-        <p>Category: <br><input id="category" class="input-box" type="text" placeholder="Category"/></p>
+        <p>Category: <br>
+          <Multiselect
+              v-model="value"
+              :options="options"
+              :multiple="false"
+              :close-on-select="true"
+              placeholder="Pick one"
+              label="name"
+              track-by="name"
+              id="category"
+          />
+        </p>
       </div>
       <p class="description">Add a new resource to be archived.</p>
       <button v-on:click="addResource">Add</button>
@@ -17,9 +28,17 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
+
 export default {
   name: 'create',
   auth: true,
+  components: {Multiselect},
+  data() {
+    return {
+      value: [],
+    }
+  },
   methods: {
     addResource: function () {
       const name = document.getElementById('name').value
@@ -27,7 +46,7 @@ export default {
       const description = document.getElementById('description').value;
       const source = document.getElementById('source').value;
       const author = document.getElementById('author').value;
-      const category = document.getElementById('category').value;
+      const category = this.value;
       const data = {
         name: name,
         blurb: blurb,
@@ -47,10 +66,32 @@ export default {
         console.log(error);
       });
     }
+  },
+  async asyncData(data) {
+    try {
+      const res = await data.$axios.get('api/archive/categories', {
+        headers: {
+          Authorization: data.store.state.auth.token
+        }
+      });
+
+      const categories = [];
+
+      for (let i = 0; i < res.data.length; i++) {
+        categories.push({name: res.data[i]});
+      }
+
+      return {
+        options: categories
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 </script>
 
+<style src="../node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .block {
   background: rgba(51, 50, 50, 0.5);
