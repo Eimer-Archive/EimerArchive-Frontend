@@ -3,10 +3,8 @@
     <div class="block" style="width: auto">
       <h1 class="title">Add file to resource</h1>
       <div class="description">
-        Resource ID: <input id="id" class="input-box" type="text" placeholder="Resource ID"/><br>
-        Description: <input id="description" class="input-box" type="text" placeholder="Description"/><br>
-        Versions:
-        <Multiselect
+        <p>Description: <br><input id="description" class="input-box" type="text" placeholder="Description"/></p>
+        <p>Versions: <br><Multiselect
             v-model="value"
             :options="options"
             :multiple="true"
@@ -15,9 +13,9 @@
             label="name"
             track-by="name"
             id="versions"
-        />
-        Version: <input id="version" class="input-box" type="text" placeholder="Version"/><br>
-        File: <input id="file" class="input-box" type="file" placeholder="File"/><br>
+        /></p>
+        <p>Version: <br><input id="version" class="input-box" type="text" placeholder="Version"/></p>
+        <p>File: <input id="file" class="input-box" type="file" placeholder="File"/></p>
       </div>
       <p class="description">Add a new resource to be archived.</p>
       <button v-on:click="addResource">Add</button>
