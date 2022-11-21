@@ -37,13 +37,12 @@ export default {
   },
   methods: {
     addResource: function () {
-      const id = document.getElementById('id').value
       const description = document.getElementById('description').value;
       const version = document.getElementById('version').value;
       const file = document.getElementById('file').files[0];
 
       const data = {
-        id: id,
+        id: this.$route.params.id,
         description: description,
         version: version,
         versions: [this.value]

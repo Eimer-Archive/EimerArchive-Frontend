@@ -22,6 +22,8 @@ export default {
       const project = res.data;
       const versions = {};
 
+      // TODO: somehow sort this in the correct order
+
       // Not actually 100% sure if these comments are correct, but it works, so I'm not touching it
       // Loop through the updates
       for (let j = 0; j < project.updates.length; j++) {
