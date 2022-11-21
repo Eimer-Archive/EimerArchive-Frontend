@@ -3,8 +3,8 @@
     <div class="block" style="width: auto">
       <h1 class="title">Login</h1>
       <div class="description">
-        Username: <input id="username" class="input-box" type="text" placeholder="Username"/><br>
-        Password: <input id="password" class="input-box" type="password" placeholder="Password"/><br>
+        <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username"/><br></p>
+        <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password"/><br></p>
         <button v-on:click="login">Login</button>
       </div>
       <p class="description">Currently there is no signing up for an account, this feature is still in the works. Only

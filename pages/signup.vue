@@ -3,9 +3,9 @@
     <div class="block" style="width: auto">
       <h1 class="title">Login</h1>
       <div class="description">
-        Username: <input id="username" class="input-box" type="text" placeholder="Username"/><br>
-        Password: <input id="password" class="input-box" type="password" placeholder="Password"/><br>
-        Email: <input id="email" class="input-box" type="text" placeholder="Email"/><br>
+        <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username"/><br></p>
+        <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password"/><br></p>
+        <p>Email: <br><input id="email" class="input-box" type="text" placeholder="Email"/><br></p>
         <button v-on:click="signup">Signup</button>
       </div>
     </div>

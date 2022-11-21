@@ -3,12 +3,12 @@
     <div class="block" style="width: auto">
       <h1 class="title">Add Resource</h1>
       <div class="description">
-        Name: <input id="name" class="input-box" type="text" placeholder="Name"/><br>
-        Blurb: <input id="blurb" class="input-box" type="text" placeholder="Blurb"/><br>
-        Description: <input id="description" class="input-box" type="text" placeholder="Description"/><br>
-        Source: <input id="source" class="input-box" type="text" placeholder="Source"/><br>
-        Author/s: <input id="author" class="input-box" type="text" placeholder="Author/s"/><br>
-        Category: <input id="category" class="input-box" type="text" placeholder="Category"/>
+        <p>Name: <br><input id="name" class="input-box" type="text" placeholder="Name"/></p>
+        <p>Blurb: <br><input id="blurb" class="input-box" type="text" placeholder="Blurb"/></p>
+        <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description"/></p>
+        <p>Source: <br><input id="source" class="input-box" type="text" placeholder="Source"/></p>
+        <p>Author/s: <br><input id="author" class="input-box" type="text" placeholder="Author/s"/></p>
+        <p>Category: <br><input id="category" class="input-box" type="text" placeholder="Category"/></p>
       </div>
       <p class="description">Add a new resource to be archived.</p>
       <button v-on:click="addResource">Add</button>
@@ -68,6 +68,12 @@ export default {
 .description {
   color: white;
   text-decoration-thickness: 1px;
+}
+
+.description-box {
+  width: 100%;
+  resize: vertical;
+  height: 200px;
 }
 
 .input-box {
