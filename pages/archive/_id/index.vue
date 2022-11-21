@@ -1,6 +1,8 @@
 <template>
   <div>
     <div class="block">
+      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + project.id + '/edit'"><button class="download-button" style="margin-top: 3px">Edit</button></a>
+      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + project.id + '/upload'"><button class="download-button" style="margin-top: 3px">Upload</button></a>
       <h1 class="title"><b>{{ project.name }}</b></h1>
       <p class="description">{{ project.description }}</p>
       <p v-if="JSON.stringify(versions) === '{}'" class="description"><br>No files for this resource yet :(</p>
