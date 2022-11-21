@@ -3,7 +3,7 @@
     <div class="block" style="width: auto">
       <h1 class="title">Add file to resource</h1>
       <div class="description">
-        <p>Description: <br><input id="description" class="input-box" type="text" placeholder="Description"/></p>
+        <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description"/></p>
         <p>Versions: <br><Multiselect
             v-model="value"
             :options="options"
@@ -104,6 +104,12 @@ export default {
 .description {
   color: white;
   text-decoration-thickness: 1px;
+}
+
+.description-box {
+  width: 100%;
+  height: 200px;
+  resize: vertical;
 }
 
 .input-box {
