@@ -1,6 +1,6 @@
 <template>
   <div class="block">
-    <h1 class="title">{{ version.replaceAll("_", ".").toLowerCase() }}</h1> <!-- Probably do this backend as I think some versions need the _ for the version name -->
+    <h1 class="title">{{ version }}</h1> <!-- Probably do this backend as I think some versions need the _ for the version name -->
     <file v-for="version in versions" :key="id" :version="version" :id="id"></file>
   </div>
 </template>

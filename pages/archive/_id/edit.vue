@@ -37,9 +37,6 @@ export default {
       value: null,
     }
   },
-  created() {
-    //console.log(project)
-  },
   methods: {
     editResource: async function () {
       const description = document.getElementById('description').value;
