@@ -6,7 +6,6 @@ export default async function (context) {
 
     try {
         const user = await context.app.$axios.post('api/info', {"token": token});
-
         await context.store.dispatch('auth/fetchUser', {
             token: token,
             'user': user.data

@@ -56,15 +56,16 @@ export default {
         category: category
       }
 
-      this.$axios.post('api/archive/create', data, {
-        headers: {
-          Authorization: this.$store.state.auth.token
-        },
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
+      try {
+        this.$axios.post('api/archive/create', data, {
+          headers: {
+            Authorization: this.$store.state.auth.token
+          },
+        })
+        this.$router.push('/plugins')
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   async asyncData(data) {
