@@ -1,6 +1,6 @@
 <template>
   <div style="max-width: 1200px; margin-left: auto; margin-right: auto">
-    <div class="block" style="width: auto">
+    <div class="text-block" style="width: auto">
       <h1 class="title">Add file to resource</h1>
       <div class="description">
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description"/></p>
@@ -88,13 +88,6 @@ export default {
 
 <style src="../../../node_modules/vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
-.block {
-  background: rgba(51, 50, 50, 0.5);
-  border-radius: 6px;
-  padding: 10px;
-  margin: 8px 0;
-}
-
 .title {
   font-size: 20px;
   text-decoration-thickness: auto;

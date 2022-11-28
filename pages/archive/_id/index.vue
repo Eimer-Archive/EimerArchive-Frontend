@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="block">
+    <div class="text-block">
       <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + project.id + '/edit'"><button class="download-button" style="margin-top: 3px">Edit</button></a>
       <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + project.id + '/upload'"><button class="download-button" style="margin-top: 3px">Upload</button></a>
       <h1 class="title"><b>{{ project.name }}</b></h1>
@@ -55,13 +55,6 @@ export default {
 </script>
 
 <style scoped>
-.block {
-  background: rgba(51, 50, 50, 0.5);
-  border-radius: 6px;
-  padding: 15px;
-  margin: 16px 0;
-}
-
 .title {
   font-size: 20px;
   text-decoration-thickness: auto;

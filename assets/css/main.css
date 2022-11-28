@@ -2,3 +2,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
 }
+
+.text-block {
+    background: rgba(51, 50, 50, 0.5);
+    border-radius: 6px;
+    padding: 15px;
+    margin: 16px 0;
+    color: white;
+}
