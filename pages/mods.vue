@@ -13,14 +13,9 @@ export default {
     resource
   },
   async asyncData(data) {
-    const config = {
-      headers: {
-        Accept: "application/json"
-      }
-    };
 
     try {
-      const res = await data.$axios.get('api/archive/mods', config);
+      const res = await data.$axios.get('api/archive/mods');
 
       const resources = [];
 

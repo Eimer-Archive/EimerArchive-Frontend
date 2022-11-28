@@ -39,20 +39,20 @@ export default {
   },
   methods: {
     editResource: async function () {
+      const title = document.getElementById('title').value
+      const blurb = document.getElementById('blurb').value;
       const description = document.getElementById('description').value;
 
       try {
         const res = await this.$axios.post('api/archive/' + this.$route.params.id + "/edit", {
-          name: "ayo",
-          version: "no",
+          name: title,
+          blurb: blurb,
           description: description
         }, {
           headers: {
             Authorization: this.$store.state.auth.token,
           }
         })
-
-        console.log(res.data)
       } catch (e) {
         console.log(e);
       }
