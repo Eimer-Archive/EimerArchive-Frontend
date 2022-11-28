@@ -56,6 +56,7 @@ export default {
             Authorization: this.$store.state.auth.token,
           }
         })
+        await this.$router.push('/archive/' + this.$route.params.id)
       } catch (e) {
         console.log(e);
       }

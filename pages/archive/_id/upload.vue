@@ -4,16 +4,18 @@
       <h1 class="title">Add file to resource</h1>
       <div class="description">
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description"/></p>
-        <p>Versions: <br><Multiselect
-            v-model="value"
-            :options="options"
-            :multiple="true"
-            :close-on-select="false"
-            placeholder="Pick some"
-            label="name"
-            track-by="name"
-            id="versions"
-        /></p>
+        <p>Versions: <br>
+          <Multiselect
+              v-model="value"
+              :options="options"
+              :multiple="true"
+              :close-on-select="false"
+              placeholder="Pick some"
+              label="name"
+              track-by="name"
+              id="versions"
+          />
+        </p>
         <p>Version: <br><input id="version" class="input-box" type="text" placeholder="Version"/></p>
         <p>File: <input id="file" class="input-box" type="file" placeholder="File"/></p>
       </div>
@@ -52,16 +54,18 @@ export default {
       formData.append('file', file);
       formData.append('data', JSON.stringify(data));
 
-      this.$axios.post('api/file/upload', formData, {
-        headers: {
-          Authorization: this.$store.state.auth.token,
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
+      try {
+        this.$axios.post('api/file/upload', formData, {
+          headers: {
+            Authorization: this.$store.state.auth.token,
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+
+        this.$router.push('/archive/' + this.$route.params.id)
+      } catch (e) {
+        console.log(e)
+      }
     }
   },
   async asyncData(data) {
