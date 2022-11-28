@@ -5,6 +5,7 @@
       <div class="description">
         <p>Name: <br><input id="title" class="input-box" :value="project.name"/></p>
         <p>Blurb: <br><input id="blurb" class="input-box" :value="project.blurb"/></p>
+        <p>Source: <br><input id="source" class="input-box" :value="project.source"/></p>
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description" :value="project.description"/></p><br>
         <p>Category: <br>
           <Multiselect
@@ -42,11 +43,13 @@ export default {
       const title = document.getElementById('title').value
       const blurb = document.getElementById('blurb').value;
       const description = document.getElementById('description').value;
+      const source = document.getElementById('source').value;
 
       try {
         const res = await this.$axios.post('api/archive/' + this.$route.params.id + "/edit", {
           name: title,
           blurb: blurb,
+          source: source,
           description: description
         }, {
           headers: {
