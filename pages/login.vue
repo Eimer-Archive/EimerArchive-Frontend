@@ -2,20 +2,17 @@
   <div style="max-width: 1200px; margin-left: auto; margin-right: auto">
     <div class="block" style="width: auto">
       <h1 class="title">Login</h1>
-      <div class="description">
+      <form @submit.prevent="login" class="description">
         <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username"/><br></p>
         <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password"/><br></p>
-        <button v-on:click="login">Login</button>
-      </div>
-      <p class="description">Currently there is no signing up for an account, this feature is still in the works. Only
-        admins have accounts.</p>
+        <input type="submit" value="Login">
+      </form>
+      <p class="description">If you don't have an account, sign up <nuxt-link to="/signup">here</nuxt-link>.</p>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'add',
   methods: {
@@ -35,7 +32,7 @@ export default {
       }
 
       try {
-        await axios.post('http://localhost:8080/api/auth/signin', data, config)
+        await this.$axios.post('api/auth/signin', data, config)
         await this.$router.push('/')
       } catch (e) {
         console.log(e)

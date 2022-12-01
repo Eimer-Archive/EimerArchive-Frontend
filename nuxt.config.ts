@@ -63,7 +63,7 @@ export default {
 
     axios: {
         // set default axios url
-        baseURL: 'http://localhost:8080',
+        baseURL: process.env.API_URL || 'http://localhost:8080',
         // default config
         headers: {
             common: {

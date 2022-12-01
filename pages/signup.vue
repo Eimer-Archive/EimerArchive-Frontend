@@ -2,23 +2,21 @@
   <div style="max-width: 1200px; margin-left: auto; margin-right: auto">
     <div class="block" style="width: auto">
       <h1 class="title">Login</h1>
-      <div class="description">
-        <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username"/><br></p>
-        <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password"/><br></p>
-        <p>Email: <br><input id="email" class="input-box" type="text" placeholder="Email"/><br></p>
-        <button v-on:click="signup">Signup</button>
-      </div>
+      <form @submit.prevent="signup" class="description">
+        <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username" maxlength="24" minlength="2" pattern="[a-zA-Z0-9_]+" required/><br></p>
+        <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password" maxlength="32" minlength="6" required/><br></p>
+        <p>Email: <br><input id="email" class="input-box" type="text" placeholder="Email" maxlength="320" minlength="1" pattern="^(.+)@(\S+)$" required/><br></p>
+        <input type="submit" value="Sign up"/>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'add',
   methods: {
-    signup: function () {
+    signup: async function () {
       const config = {
         headers: {
           Accept: 'application/json',
@@ -34,11 +32,12 @@ export default {
         email: email
       }
 
-      axios.post('http://localhost:8080/api/auth/signup', data, config).then(function (response) {
-        console.log(response)
-      }).catch(function (error) {
-        console.log(error)
-      })
+      try {
+        await this.$axios.post('api/auth/signup', data, config);
+        await this.$router.push('/')
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }
