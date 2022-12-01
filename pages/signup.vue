@@ -7,6 +7,7 @@
         <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password" maxlength="32" minlength="6" required/><br></p>
         <p>Email: <br><input id="email" class="input-box" type="text" placeholder="Email" maxlength="320" minlength="1" pattern="^(.+)@(\S+)$" required/><br></p>
         <input type="submit" value="Sign up"/>
+        <p style="color: red" id="error"></p>
       </form>
     </div>
   </div>
@@ -33,8 +34,13 @@ export default {
       }
 
       try {
-        await this.$axios.post('api/auth/signup', data, config);
-        await this.$router.push('/')
+        const res = await this.$axios.post('api/auth/signup', data, config);
+
+        if (res.data.error === undefined) {
+          await this.$router.push('/')
+        } else {
+          document.getElementById('error').innerHTML = res.data.error
+        }
       } catch (e) {
         console.log(e)
       }

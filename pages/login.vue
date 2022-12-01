@@ -6,6 +6,7 @@
         <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username"/><br></p>
         <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password"/><br></p>
         <input type="submit" value="Login">
+        <p style="color: red" id="error"></p>
       </form>
       <p class="description">If you don't have an account, sign up <nuxt-link to="/signup">here</nuxt-link>.</p>
     </div>
@@ -32,8 +33,13 @@ export default {
       }
 
       try {
-        await this.$axios.post('api/auth/signin', data, config)
-        await this.$router.push('/')
+        const res = await this.$axios.post('api/auth/signin', data, config)
+
+        if (res.data.error === undefined) {
+          await this.$router.push('/')
+        } else {
+          document.getElementById('error').innerHTML = res.data.errorText
+        }
       } catch (e) {
         console.log(e)
       }

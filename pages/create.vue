@@ -24,6 +24,7 @@
       </div>
       <p class="description">Add a new resource to be archived.</p>
       <button v-on:click="addResource">Add</button>
+      <p style="color: red" id="error"></p>
     </div>
   </div>
 </template>
@@ -41,7 +42,7 @@ export default {
     }
   },
   methods: {
-    addResource: function () {
+    addResource: async function () {
       const name = document.getElementById('name').value
       const slug = document.getElementById('slug')
       const blurb = document.getElementById('blurb').value;
@@ -60,12 +61,17 @@ export default {
       }
 
       try {
-        this.$axios.post('api/archive/create', data, {
+        const res = await this.$axios.post('api/archive/create', data, {
           headers: {
             Authorization: this.$store.state.auth.token
           },
         })
-        this.$router.push('/archive/' + data.slug)
+
+        if (res.data.error === undefined) {
+          await this.$router.push('/archive/' + data.slug)
+        } else {
+          document.getElementById('error').innerHTML = res.data.error
+        }
       } catch (e) {
         console.log(e)
       }

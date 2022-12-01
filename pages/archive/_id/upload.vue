@@ -21,6 +21,7 @@
       </div>
       <p class="description">Add a new resource to be archived.</p>
       <button v-on:click="addResource">Add</button>
+      <p style="color: red" id="error"></p>
     </div>
   </div>
 </template>
@@ -44,7 +45,7 @@ export default {
     }
   },
   methods: {
-    addResource: function () {
+    addResource: async function () {
       const description = document.getElementById('description').value;
       const version = document.getElementById('version').value;
       const file = document.getElementById('file').files[0];
@@ -61,14 +62,18 @@ export default {
       formData.append('data', JSON.stringify(data));
 
       try {
-        this.$axios.post('api/file/upload', formData, {
+        const res = await this.$axios.post('api/file/upload', formData, {
           headers: {
             Authorization: this.$store.state.auth.token,
             'Content-Type': 'multipart/form-data'
           }
         })
 
-        this.$router.push('/archive/' + this.$route.params.id)
+        if (res.data.error === undefined) {
+          await this.$router.push('/archive/' + this.$route.params.id)
+        } else {
+          document.getElementById('error').innerHTML = res.data.error
+        }
       } catch (e) {
         console.log(e)
       }

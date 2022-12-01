@@ -23,6 +23,7 @@
       </div>
       <p class="description">Edit the resource info</p>
       <button v-on:click="editResource">Edit</button>
+      <p style="color: red" id="error"></p>
     </div>
   </div>
 </template>
@@ -59,7 +60,12 @@ export default {
             Authorization: this.$store.state.auth.token,
           }
         })
-        await this.$router.push('/archive/' + slug)
+
+        if (res.data.error === undefined) {
+          await this.$router.push('/archive/' + slug)
+        } else {
+          document.getElementById('error').innerHTML = res.data.error
+        }
       } catch (e) {
         console.log(e);
       }
