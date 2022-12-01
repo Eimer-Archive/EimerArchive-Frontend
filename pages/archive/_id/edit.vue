@@ -4,6 +4,7 @@
       <h1 class="title">Update Resource Info</h1>
       <div class="description">
         <p>Name: <br><input id="title" class="input-box" :value="project.name"/></p>
+        <p>Slug: <br><input id="slug" class="input-box" :value="project.slug"/></p>
         <p>Blurb: <br><input id="blurb" class="input-box" :value="project.blurb"/></p>
         <p>Source: <br><input id="source" class="input-box" :value="project.source"/></p>
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description" :value="project.description"/></p><br>
@@ -41,6 +42,7 @@ export default {
   methods: {
     editResource: async function () {
       const title = document.getElementById('title').value
+      const slug = document.getElementById('slug').value
       const blurb = document.getElementById('blurb').value;
       const description = document.getElementById('description').value;
       const source = document.getElementById('source').value;
@@ -48,6 +50,7 @@ export default {
       try {
         const res = await this.$axios.post('api/archive/slug/' + this.$route.params.id + "/edit", {
           name: title,
+          slug: slug,
           blurb: blurb,
           source: source,
           description: description
@@ -56,7 +59,7 @@ export default {
             Authorization: this.$store.state.auth.token,
           }
         })
-        await this.$router.push('/archive/' + this.$route.params.id)
+        await this.$router.push('/archive/' + slug)
       } catch (e) {
         console.log(e);
       }
@@ -79,7 +82,6 @@ export default {
         categories.push({name: res.data[i]});
       }
 
-      console.log("btuh")
       return {
         project,
         options: categories

@@ -3,7 +3,8 @@
     <div class="block" style="width: auto">
       <h1 class="title">Add Resource</h1>
       <div class="description">
-        <p>Name: <br><input id="name" class="input-box" type="text" placeholder="Name"/></p>
+        <p>Name: <br><input id="name" class="input-box" type="text" placeholder="Name" v-on:keyup="slug"/></p>
+        <p>Slug: <br><input id="slug" class="input-box" type="text" placeholder="Slug"/></p>
         <p>Blurb: <br><input id="blurb" class="input-box" type="text" placeholder="Blurb"/></p>
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description"/></p>
         <p>Source: <br><input id="source" class="input-box" type="text" placeholder="Source"/></p>
@@ -42,6 +43,7 @@ export default {
   methods: {
     addResource: function () {
       const name = document.getElementById('name').value
+      const slug = document.getElementById('slug')
       const blurb = document.getElementById('blurb').value;
       const description = document.getElementById('description').value;
       const source = document.getElementById('source').value;
@@ -49,6 +51,7 @@ export default {
       const category = this.value;
       const data = {
         name: name,
+        slug: (slug.value === "" ? slug.placeholder : slug.value),
         blurb: blurb,
         description: description,
         source: source,
@@ -66,6 +69,10 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    slug: function () {
+      const name = document.getElementById('name').value
+      document.getElementById('slug').placeholder = name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '')
     }
   },
   async asyncData(data) {
