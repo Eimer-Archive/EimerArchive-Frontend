@@ -1,12 +1,12 @@
 <template>
   <div style="max-width: 1200px; margin-left: auto; margin-right: auto">
     <div class="block" style="width: auto">
-      <h1 class="title">Login</h1>
+      <h1 class="title">Signup</h1>
       <form @submit.prevent="signup" class="description">
         <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username" maxlength="24" minlength="2" pattern="[a-zA-Z0-9_]+" required/><br></p>
         <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password" maxlength="32" minlength="6" required/><br></p>
         <p>Email: <br><input id="email" class="input-box" type="text" placeholder="Email" maxlength="320" minlength="1" pattern="^(.+)@(\S+)$" required/><br></p>
-        <input type="submit" value="Sign up"/>
+        <input class="mc-button" type="submit" value="Sign up"/>
         <p style="color: red" id="error"></p>
       </form>
     </div>

@@ -23,7 +23,7 @@
         </p>
       </div>
       <p class="description">Add a new resource to be archived.</p>
-      <button v-on:click="addResource">Add</button>
+      <button class="mc-button" v-on:click="addResource">Create</button>
       <p style="color: red" id="error"></p>
     </div>
   </div>

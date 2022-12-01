@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="text-block">
-      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + resource.slug + '/edit'"><button class="download-button" style="margin-top: 3px">Edit</button></a>
-      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + resource.slug + '/upload'"><button class="download-button" style="margin-top: 3px">Upload</button></a>
+      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + resource.slug + '/edit'"><button class="mc-button" style="margin-top: 3px">Edit</button></a>
+      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + resource.slug + '/upload'"><button class="mc-button" style="margin-top: 3px">Upload</button></a>
       <h1 class="title"><b>{{ resource.name }}</b></h1>
       <a v-if="resource.source !== ''" class="source" :href="resource.source">Source</a>
       <p class="description">{{ resource.description }}</p>
@@ -48,15 +48,6 @@ export default {
   border-top-width: 2px;
   margin-top: 10px;
   padding-top: 5px;
-}
-
-.download-button {
-  color: white;
-  border-radius: 3px;
-  border-style: solid;
-  background-color: #797979;
-  font-size: 13px;
-  padding: 1px 4px;
 }
 
 .version {

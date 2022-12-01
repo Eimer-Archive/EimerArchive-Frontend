@@ -12,3 +12,12 @@
     color: white;
     max-width: 1200px;
 }
+
+.mc-button {
+    color: white;
+    border-radius: 3px;
+    border-style: solid;
+    background-color: #797979;
+    font-size: 13px;
+    padding: 1px 4px;
+}

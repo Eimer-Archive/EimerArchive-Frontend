@@ -5,7 +5,7 @@
       <form @submit.prevent="login" class="description">
         <p>Username: <br><input id="username" class="input-box" type="text" placeholder="Username"/><br></p>
         <p>Password: <br><input id="password" class="input-box" type="password" placeholder="Password"/><br></p>
-        <input type="submit" value="Login">
+        <input class="mc-button" type="submit" value="Login">
         <p style="color: red" id="error"></p>
       </form>
       <p class="description">If you don't have an account, sign up <nuxt-link to="/signup">here</nuxt-link>.</p>

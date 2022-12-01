@@ -22,7 +22,7 @@
         </p>-->
       </div>
       <p class="description">Edit the resource info</p>
-      <button v-on:click="editResource">Edit</button>
+      <button class="mc-button" v-on:click="editResource">Confirm</button>
       <p style="color: red" id="error"></p>
     </div>
   </div>
