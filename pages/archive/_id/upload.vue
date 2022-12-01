@@ -32,6 +32,12 @@ export default {
   name: 'upload',
   auth: true,
   components: {Multiselect},
+  props: {
+    resource: {
+      type: Object,
+      default: () => {}
+    }
+  },
   data() {
     return {
       value: [],
@@ -44,7 +50,7 @@ export default {
       const file = document.getElementById('file').files[0];
 
       const data = {
-        id: this.$route.params.id,
+        id: this.resource.id,
         description: description,
         version: version,
         versions: [this.value]

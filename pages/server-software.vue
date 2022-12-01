@@ -5,9 +5,9 @@
       These are the server software that are currently available in the archive. If you would like to help out, please join
       the <a href="https://discord.gg/k8RcgxpnBS">Eimer Archive Discord</a>. Server software is the software that runs the
       Minecraft server, it is what allows players to connect to the server. The most popular was CraftBukkit which Spigot/Paper is based on.
-    </div>
+    </div><br>
     <div id="list" style="max-width: 1200px; margin-left: auto; margin-right: auto">
-      <resource v-for="resource in resources" :key="resource.id" :name="resource.name" :blurb="resource.blurb" :id="resource.id" :resource="resource" />
+      <resource v-for="resource in resources" :key="resource.id" :name="resource.name" :blurb="resource.blurb" :slug="resource.slug" :resource="resource" />
     </div>
   </div>
 </template>

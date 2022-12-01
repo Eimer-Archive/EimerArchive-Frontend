@@ -7,7 +7,7 @@
         <p>Blurb: <br><input id="blurb" class="input-box" :value="project.blurb"/></p>
         <p>Source: <br><input id="source" class="input-box" :value="project.source"/></p>
         <p>Description: <br><textarea id="description" class="input-box description-box" placeholder="Description" :value="project.description"/></p><br>
-        <p>Category: <br>
+        <!--<p>Category: <br>
           <Multiselect
               v-model="project.category"
               :options="options"
@@ -18,7 +18,7 @@
               track-by="name"
               id="category"
           />
-        </p>
+        </p>-->
       </div>
       <p class="description">Edit the resource info</p>
       <button v-on:click="editResource">Edit</button>
@@ -46,7 +46,7 @@ export default {
       const source = document.getElementById('source').value;
 
       try {
-        const res = await this.$axios.post('api/archive/' + this.$route.params.id + "/edit", {
+        const res = await this.$axios.post('api/archive/slug/' + this.$route.params.id + "/edit", {
           name: title,
           blurb: blurb,
           source: source,
@@ -64,7 +64,7 @@ export default {
   },
   async asyncData(data) {
     try {
-      let res = await data.$axios.get('api/archive/' + data.params.id);
+      let res = await data.$axios.get('api/archive/slug/' + data.params.id);
       const project = res.data;
 
       res = await data.$axios.get('api/archive/categories', {
@@ -79,6 +79,7 @@ export default {
         categories.push({name: res.data[i]});
       }
 
+      console.log("btuh")
       return {
         project,
         options: categories

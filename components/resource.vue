@@ -1,6 +1,6 @@
 <template>
-  <div class="block" style="width: auto">
-    <h1><nuxt-link :to="'/archive/' + id" class="title"><b>{{ name }}</b></nuxt-link></h1>
+  <div class="block">
+    <h1><nuxt-link :to="'/archive/' + slug" class="title"><b>{{ name }}</b></nuxt-link></h1>
     <p class="description">{{ blurb }}</p>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 export default {
   name: 'resource',
-  props: ['name', 'blurb', 'description', 'source', 'author', 'category', 'id'],
+  props: ['name', 'blurb', 'description', 'source', 'author', 'category', 'slug'],
 }
 </script>
 

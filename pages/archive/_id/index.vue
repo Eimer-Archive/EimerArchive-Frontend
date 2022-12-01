@@ -1,15 +1,14 @@
 <template>
   <div>
     <div class="text-block">
-      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + project.id + '/edit'"><button class="download-button" style="margin-top: 3px">Edit</button></a>
-      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + project.id + '/upload'"><button class="download-button" style="margin-top: 3px">Upload</button></a>
-      <h1 class="title"><b>{{ project.name }}</b></h1>
-      <a v-if="project.source !== ''" class="source" :href="project.source">Source</a>
-      <p class="description">{{ project.description }}</p>
+      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + resource.slug + '/edit'"><button class="download-button" style="margin-top: 3px">Edit</button></a>
+      <a v-if="$store.state.auth.user.username !== undefined" :href="'/archive/' + resource.slug + '/upload'"><button class="download-button" style="margin-top: 3px">Upload</button></a>
+      <h1 class="title"><b>{{ resource.name }}</b></h1>
+      <a v-if="resource.source !== ''" class="source" :href="resource.source">Source</a>
+      <p class="description">{{ resource.description }}</p>
       <p v-if="JSON.stringify(versions) === '{}'" class="description"><br>No files for this resource yet :(</p>
     </div>
-    <version-block v-for="(value, index) in versions" :key="project.id" :version="index" :versions="value"
-                   :id="project.id"></version-block>
+    <version-block v-for="(value, index) in versions" :key="resource.id" :version="index" :versions="value" :id="resource.id"></version-block>
   </div>
 </template>
 
@@ -17,39 +16,14 @@
 
 export default {
   name: 'index',
-  async asyncData(data) {
-
-    try {
-      const res = await data.$axios.get('api/archive/' + data.params.id)
-
-      const project = res.data;
-      const versions = {};
-
-      // TODO: somehow sort this in the correct order
-
-      // Not actually 100% sure if these comments are correct, but it works, so I'm not touching it
-      // Loop through the updates
-      for (let j = 0; j < project.updates.length; j++) {
-        // Loop through the versions
-        for (let i = 0; i < project.updates[j].versions.length; i++) {
-          // Check if the list of versions has the version
-          if (versions[project.updates[j].versions[i]] !== undefined) {
-            // If it does, add the update to the list
-            versions[project.updates[j].versions[i]].push(project.updates[j])
-            continue;
-          }
-          // If it doesn't, add the version to the list
-          const version = versions[project.updates[j].versions[i]] = [];
-          version.push(project.updates[j]);
-        }
-      }
-
-      return {
-        project,
-        versions,
-      }
-    } catch (e) {
-      console.log(e)
+  props: {
+    resource: {
+      type: Object,
+      default: () => {}
+    },
+    versions: {
+      type: Object,
+      default: () => {}
     }
   },
 }

@@ -17,7 +17,8 @@ export default {
   background: rgba(51, 50, 50, 0.5);
   border-radius: 6px;
   padding: 15px;
-  margin: 16px 0;
+  margin: 16px auto;
+  max-width: 1200px;
 }
 
 .title {
