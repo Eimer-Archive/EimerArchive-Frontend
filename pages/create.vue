@@ -65,7 +65,7 @@ export default {
             Authorization: this.$store.state.auth.token
           },
         })
-        this.$router.push('/plugins')
+        this.$router.push('/archive/' + data.slug)
       } catch (e) {
         console.log(e)
       }
