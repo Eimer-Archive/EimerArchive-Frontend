@@ -6021,7 +6021,7 @@
   "resolved" "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz"
   "version" "1.2.2"
 
-"nuxt@^2.13.3":
+"nuxt@^2.15.8":
   "integrity" "sha512-ceK3qLg/Baj7J8mK9bIxqw9AavrF+LXqwYEreBdY/a4Sj8YV4mIvhqea/6E7VTCNNGvKT2sJ/TTJjtfQ597lTA=="
   "resolved" "https://registry.npmjs.org/nuxt/-/nuxt-2.15.8.tgz"
   "version" "2.15.8"
