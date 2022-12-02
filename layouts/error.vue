@@ -1,12 +1,7 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <Header/>
-    <div class="basis-0 grow">
-      <div class="ml-[50%] my-8 transform -translate-x-1/2 w-[80%]">
-        <nuxt/>
-      </div>
-    </div>
-    <!--<Footer/>-->
+  <div class="text-block">
+    <h1 class="text-4xl font-bold text-white">404</h1>
+    <p class="text-white">The page you are looking for does not exist.</p>
   </div>
 </template>
 
@@ -18,11 +13,9 @@ body {
 
 <script>
 import Header from '../components/header'
-import Footer from '../components/footer'
 
 export default {
   components: {
-    Footer,
     Header,
   },
 }
