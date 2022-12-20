@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export default async function (context) {
 
     const token = context.app.$cookies.get('user-cookie');
