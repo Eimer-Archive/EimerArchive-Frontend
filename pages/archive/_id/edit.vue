@@ -32,7 +32,7 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
-  name: 'upload',
+  name: 'edit',
   auth: true,
   components: {Multiselect},
   data() {
@@ -63,6 +63,7 @@ export default {
 
         if (res.data.error === undefined) {
           await this.$router.push('/archive/' + slug)
+          this.$nuxt.refresh();
         } else {
           document.getElementById('error').innerHTML = res.data.error
         }

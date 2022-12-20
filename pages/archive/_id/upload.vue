@@ -42,10 +42,14 @@ export default {
   data() {
     return {
       value: [],
+      clicked: false
     }
   },
   methods: {
     addResource: async function () {
+      if (this.clicked) return;
+      this.clicked = true;
+
       const description = document.getElementById('description').value;
       const version = document.getElementById('version').value;
       const file = document.getElementById('file').files[0];
@@ -71,6 +75,7 @@ export default {
 
         if (res.data.error === undefined) {
           await this.$router.push('/archive/' + this.$route.params.id)
+          this.$nuxt.refresh();
         } else {
           document.getElementById('error').innerHTML = res.data.error
         }
