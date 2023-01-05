@@ -4,10 +4,13 @@ export default async function (context) {
 
     try {
         const user = await context.app.$axios.post('api/info', {"token": token});
-        await context.store.dispatch('auth/fetchUser', {
-            token: token,
-            'user': user.data
-        })
+
+        if (user.data.error === undefined) {
+            await context.store.dispatch('auth/fetchUser', {
+                token: token,
+                'user': user.data
+            })
+        }
 
         if (routeOption(context.route, 'auth', true) && context.store.state.auth.user.role !== 'ROLE_ADMIN') {
             return context.redirect('/login')
