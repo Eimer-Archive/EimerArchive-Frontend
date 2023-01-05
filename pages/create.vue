@@ -61,19 +61,16 @@ export default {
       }
 
       try {
-        const res = await this.$axios.post('api/archive/create', data, {
+        await this.$axios.post('api/archive/create', data, {
           headers: {
             Authorization: this.$store.state.auth.token
           },
         })
 
-        if (res.data.error === undefined) {
-          await this.$router.push('/archive/' + data.slug)
-        } else {
-          document.getElementById('error').innerHTML = res.data.error
-        }
+        await this.$router.push('/archive/' + data.slug)
       } catch (e) {
         console.log(e)
+        document.getElementById('error').innerHTML = e.response.data.error
       }
     },
     slug: function () {
