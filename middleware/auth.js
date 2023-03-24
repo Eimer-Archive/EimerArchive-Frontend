@@ -12,8 +12,11 @@ export default async function (context) {
             })
         }
 
-        if (routeOption(context.route, 'auth', true) && context.store.state.auth.user.role !== 'ROLE_ADMIN') {
-            return context.redirect('/login')
+        console.log(user.data)
+
+        // TODO: make different auth levels for mods, admin premium users only etc
+        if (routeOption(context.route, 'auth', true) && !context.store.state.auth.user.roles.includes('ROLE_ADMIN')) {
+            return context.redirect('/signin')
         }
     } catch (e) {
         console.error("Error: ", e);

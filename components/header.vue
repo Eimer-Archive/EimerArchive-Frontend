@@ -5,7 +5,7 @@
       <nuxt-link to="/plugins"><button class="block text-white font-semibold">Plugins</button></nuxt-link>
       <nuxt-link to="/mods"><button class="block text-white font-semibold">Mods</button></nuxt-link>
       <nuxt-link to="/server-software"><button class="block text-white font-semibold">Server Software</button></nuxt-link>
-      <nuxt-link v-if="$store.state.auth.user !== null && $store.state.auth.user.role === 'ROLE_ADMIN'" to="/create"><button class="block text-white font-semibold">Create</button></nuxt-link>
+      <nuxt-link v-if="$store.state.auth.user !== null && $store.state.auth.user.roles.includes('ROLE_ADMIN')" to="/create"><button class="block text-white font-semibold">Create</button></nuxt-link>
 
       <nuxt-link v-if="$store.state.auth.user === null" to="/login" class="block text-white font-semibold" style="margin-left: auto;"><button class="block text-white font-semibold">Login</button></nuxt-link>
 
